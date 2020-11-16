@@ -1,0 +1,72 @@
+<div mat-dialog-content>
+    <h4><strong>Add Hotel</strong></h4>
+</div>
+<div mat-dialog-actions>
+    <form [formGroup]="hotelGroup" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label class="control-label col-md-12">Address: </label>
+            <div class="col-md-12">
+                <div *ngIf="address.invalid && (address.dirty || address.touched)" class="text-danger">
+                    <div *ngIf="address.errors.required">
+                        Address is required.
+                    </div>
+                </div>
+                <input class="form-control" formControlName="address" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-12">Currency: </label>
+            <div class="col-md-12">
+                <div *ngIf="currency.invalid && (currency.dirty || currency.touched)" class="text-danger" required>
+                    <div *ngIf="currency.errors.required">
+                        Curreny is required.
+                    </div>
+                </div>
+                <input class="form-control" formControlName="currency" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-12">Price: </label>
+            <div class="col-md-12">
+                <div *ngIf="price.invalid && (price.dirty || price.touched)" class="text-danger">
+                    <div *ngIf="price.errors.required">
+                        price is required.
+                    </div>
+                </div>
+                <input class="form-control" formControlName="price" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-12">Phone: </label>
+            <div class="col-md-12">
+                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="text-danger" required>
+                    <div *ngIf="phone.errors.required">
+                        Phone is required.
+                    </div>
+                    <div *ngIf="phone.errors.maxlength">
+                        Phone number must be not more than 10 digits
+                    </div>
+                    <div *ngIf="phone.errors.maxlength">
+                        Phone number must be at least 10 digits
+                    </div>
+                </div>
+                <input class="form-control" formControlName="phone" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-12">Email: </label>
+            <div class="col-md-12">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                    <div *ngIf="email.errors.required">
+                        Email is required.
+                    </div>
+                </div>
+                <input class="form-control" formControlName="email" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Save</button>
+            <button class="btn btn-warning" (click)="onCancel()">Canel</button>
+        </div>
+    </form>
+</div>

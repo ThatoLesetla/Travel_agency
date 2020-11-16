@@ -1,8 +1,10 @@
+import { HotelService } from './../services/hotel.service';
 import { FlightService } from './../services/flight.service';
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
 import { ClientService} from '../services/client.service';
 import { Client } from '../models/client-interface';
+import { Hotel } from '../models/hotel-interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,11 +14,14 @@ import { Client } from '../models/client-interface';
 export class DashboardComponent implements OnInit {
 
   public clients: Client[];
+  public hotels: Hotel[];
   public numClients: number;
   public numAirports: number;
+  public numHotels: number;
 
   constructor(private clientService: ClientService,
-              private flights: FlightService) { }
+              private flights: FlightService,
+              private hotelService: HotelService) { }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -84,6 +89,11 @@ export class DashboardComponent implements OnInit {
     this.clientService.findAll().subscribe(data => {
       this.clients = data;
       this.numClients = data.length;
+    })
+
+    this.hotelService.findAll().subscribe(data => {
+      this.hotels = data;
+      this.numHotels = data.length;
     })
     /*===================== GET Clients End ========================= */
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */

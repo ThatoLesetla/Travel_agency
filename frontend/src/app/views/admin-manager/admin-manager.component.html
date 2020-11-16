@@ -10,19 +10,19 @@
                                 <ul class="nav nav-tabs" data-tabs="tabs">
                                     <li class="nav-item">
                                         <a mat-button class="nav-link active" href="#package" data-toggle="tab">
-                                            <i class="material-icons">bug_report</i> Hotel Reservations
+                                            <i class="material-icons">location_on</i> Hotel Reservations
                                             <div class="ripple-container"></div>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a mat-button class="nav-link" href="#messages" data-toggle="tab">
-                                            <i class="material-icons">code</i> Car Reservations
+                                            <i class="material-icons">directions_car</i> Car Reservations
                                             <div class="ripple-container"></div>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a mat-button class="nav-link" href="#settings" data-toggle="tab">
-                                            <i class="material-icons">cloud</i> Flight Reservations
+                                            <i class="material-icons">airplanemode_active</i> Flight Reservations
                                             <div class="ripple-container"></div>
                                         </a>
                                     </li>
@@ -34,28 +34,28 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="package">
                                 <div class="row">
-                                    <button class="btn btn-primary">Add </button>
+                                    <button class="btn btn-primary" (click)="addHotel('test')">Add </button>
                                 </div>
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th>
-                                                Code
+                                                Mark
                                             </th>
                                             <th>
-                                                Title
+                                                Address
                                             </th>
                                             <th>
-                                                Description
+                                                Price per night
                                             </th>
                                             <th>
-                                                Location
+                                                Currency
                                             </th>
                                             <th>
-                                                Duration
+                                                Phone
                                             </th>
                                             <th>
-                                                Price
+                                                Email
                                             </th>
                                             <th>
                                                 Action
@@ -63,7 +63,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr *ngFor="let hotel of hotels">
                                             <td>
                                                 <div class="form-check">
                                                     <label class="form-check-label">
@@ -75,18 +75,18 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                test
+                                                {{hotel.address}}
                                             </td>
                                             <td>
-                                                test
+                                                {{hotel.pricePerNight}}
                                             </td>
                                             <td>
-                                                test
+                                                {{hotel.currency}}
                                             </td>
                                             <td>
-                                                5 days
+                                                {{hotel.phone}}
                                             </td>
-                                            <td>R4500</td>
+                                            <td>{{hotel.email}}</td>
                                             <td class="td-actions text-right">
                                                 <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">edit</i>
