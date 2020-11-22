@@ -30,3 +30,24 @@ export class Client {
     @Column()
     updateDate: Date;
 }
+@Entity()
+export class Car {
+
+    @PrimaryGeneratedColumn()
+    regNo: string;
+
+    @Column()
+    plateNumber: string;
+    
+    @Column()
+    brand: string;
+
+    @Column()
+    model: string;
+
+    @Column()
+    year: number;
+
+    @Column()
+    colour: string;
+}

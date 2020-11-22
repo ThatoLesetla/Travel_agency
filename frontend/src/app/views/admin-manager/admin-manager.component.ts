@@ -1,9 +1,11 @@
+import { CarService } from '../../services/car.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NotificationsService } from '../../services/notifications.service';
 import { HotelService } from '../../services/hotel.service';
 import { Hotel } from '../../models/hotel-interface';
+import { Car } from '../../models/car-interface';
 import {
   MatDialog,
   MatDialogRef,
@@ -21,22 +23,39 @@ export interface DialogData {
 })
 export class AdminManagerComponent implements OnInit {
   hotels: Hotel[] = [];
+  cars: Car[] = [];
 
   constructor(
     private dialog: MatDialog,
     private hotelService: HotelService,
-    private notifications: NotificationsService) { }
+    private notifications: NotificationsService,
+    private carService: CarService
+    ) { }
 
   ngOnInit(): void {
     this.hotelService.findAll().subscribe(data => {
       this.hotels = data;
     });
+
+    this.carService.findAll().subscribe(data => {
+      this.cars = data;
+    })
   }
 
   addHotel(hotelID: any): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
       width: '400px',
       data: { hotelID: hotelID },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      
+    });
+  }
+
+  addCar(): void {
+    const dialogRef = this.dialog.open(CarDialogComponent, {
+      width: '400px'
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -128,3 +147,75 @@ export class DialogOverviewExampleDialogComponent  {
 
 
 }
+
+@Component({
+  selector: 'app-CarDialogComponent',
+  templateUrl: './carDialogComponent.html',
+})
+export class CarDialogComponent  {
+  public carID: string;
+  constructor(
+    public dialogRef: MatDialogRef<CarDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public dialogData: DialogData,
+    private router: Router,
+    private carService: CarService,
+    private notifications: NotificationsService
+
+  ) {}
+
+  carForm = new FormGroup({
+    plateNumber: new FormControl('', Validators.required),
+    brand: new FormControl('', Validators.required),
+    model: new FormControl('', Validators.required),
+    year: new FormControl('', Validators.required),
+    colour: new FormControl('', Validators.required),
+  })
+
+
+  get plateNumber() {
+    return this.carForm.get('plateNumber');
+  }
+
+  get brand() {
+    return this.carForm.get('brand');
+  }
+
+  get year() {
+    return this.carForm.get('year');
+  }
+
+  get colour() {
+    return this.carForm.get('colour');
+  }
+
+  onCancel(): void {
+    this.dialogRef.close();
+  }
+
+  onSubmit() {
+   this.carService.create(this.carForm.value).subscribe(data => {
+     this.notifications.showNotification('top', 'right', 'Car added successfully to travefy portal');
+     this.onCancel();
+   }, error => {
+     this.notifications.showNotification('top', 'right', 'There was a error with adding car. Please try again later');
+     this.onCancel();
+   })
+  }
+
+  /*
+  onDelete() {
+    this.carService.delete(this.dialogData.carID).subscribe(data => {
+     this.notifications.showNotification(
+       'top',
+       'right',
+       'Client account successfully deleted'
+     );
+     this.dialogRef.close(); // close dialog
+     this.router.navigate(['/dashboard']);
+    });
+  }
+  */
+
+
+}
+

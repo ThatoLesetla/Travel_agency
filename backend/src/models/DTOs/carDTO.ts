@@ -1,5 +1,6 @@
 export class CarDTO {
-    readonly regNo: number;
+    readonly regNo: string;
+    readonly plateNumber: string;
     readonly brand: string;
     readonly model: string;
     readonly year: number;

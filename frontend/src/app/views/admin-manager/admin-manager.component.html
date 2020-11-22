@@ -34,7 +34,7 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="package">
                                 <div class="row">
-                                    <button class="btn btn-primary" (click)="addHotel('test')">Add </button>
+                                    <button class="btn btn-primary" (click)="addHotel('test')">Add Hotel</button>
                                 </div>
                                 <div class="row">
                                     <a href="#">Export To PDF </a> |
@@ -105,10 +105,14 @@
                                 </table>
                             </div>
                             <div class="tab-pane" id="messages">
+                                <div class="row">
+                                    <button class="btn btn-primary" (click)="addCar()">Add Car </button>
+                                </div>
                                 <table class="table">
                                     <thead>
                                         <th>Mark</th>
-                                        <th>Registration</th>
+                                        <th>Car ID</th>
+                                        <th>Car Registration</th>
                                         <th>Brand</th>
                                         <th>Model</th>
                                         <th>Year</th>
@@ -116,7 +120,7 @@
                                         <th>Actions</th>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr *ngFor="let car of cars">
                                             <td>
                                                 <div class="form-check">
                                                     <label class="form-check-label">
@@ -128,19 +132,22 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                Test
+                                                {{ car.regNo}}
                                             </td>
                                             <td>
-                                                Test
+                                                {{ car.plateNumber }}
                                             </td>
                                             <td>
-                                                Test
+                                                {{ car.brand }}
                                             </td>
                                             <td>
-                                                Test
+                                                {{ car.model }}
                                             </td>
                                             <td>
-                                                Test
+                                                {{ car.year}}
+                                            </td>
+                                            <td>
+                                                {{ car.colour }}
                                             </td>
                                             <td class="td-actions text-right">
                                                 <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
@@ -228,6 +235,6 @@
                     </div>
                 </div>
             </div>
-        </div>>
+        </div>
     </div>
 </div>

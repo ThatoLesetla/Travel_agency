@@ -1,0 +1,53 @@
+<div mat-dialog-content>
+    <h4><strong>Register Car To Travefy</strong></h4>
+</div>
+<div>
+    <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label class="control-label col-md-12">Car Registration: </label>
+            <div class="col-md-12">
+                <div *ngIf="plateNumber.invalid && (plateNumber.dirty || plateNumber.touched)" class="text-danger">
+                    <div *ngIf="plateNumber.errors.required">
+                        Plate Number is required.
+                    </div>
+                </div>
+                <input class="form-control" formControlName="plateNumber" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-12">Brand: </label>
+            <div class="col-md-12">
+                <div *ngIf="brand.invalid && (brand.dirty || brand.touched)" class="text-danger" required>
+                    <div *ngIf="brand.errors.required">
+                        Car brand is required.
+                    </div>
+                </div>
+                <input class="form-control" formControlName="brand" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-12">year: </label>
+            <div class="col-md-12">
+                <div *ngIf="year.invalid && (year.dirty || year.touched)" class="text-danger">
+                    <div *ngIf="year.errors.required">
+                        Year is required.
+                    </div>
+                </div>
+                <input class="form-control" formControlName="year" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-12">Colour: </label>
+            <div class="col-md-12">
+                <div *ngIf="colour.invalid && (colour.dirty || colour.touched)" class="text-danger">
+                    <div *ngIf="colour.errors.required">
+                        Colour is required.
+                    </div>
+                </div>
+                <input class="form-control" formControlName="colour" required />
+            </div>
+        </div>
+            <button type="submit" [disabled]="!carForm.valid" class="btn btn-danger pull-right">Submit</button>
+            <button type="button" class="btn btn-warning" (click)="onCancel()">Canel</button>
+    </form>
+</div>

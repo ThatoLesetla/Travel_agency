@@ -24,7 +24,7 @@ export class PackageEditModalComponent implements OnInit {
 
   packageForm = new FormGroup({
     code: new FormControl('', Validators.required),
-    title: new FormControl('', Validators.required),
+    title: new FormControl('', [Validators.required, Validators.pattern('^$|^[A-Za-z0-9]+')]),
     description: new FormControl('', Validators.required),
     hotel: new FormControl('', Validators.required),
     duration: new FormControl('', Validators.required),
