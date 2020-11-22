@@ -7,6 +7,9 @@ export class Hotel {
     hotelID: number;
 
     @Column()
+    hotelName: string;
+
+    @Column()
     address: string;
 
     @Column()

@@ -6,9 +6,12 @@ declare var $: any;
   providedIn: "root",
 })
 export class NotificationsService {
+  public notifications: string[] = [];
+
   constructor() {}
 
   showNotification(from, align, message) {
+    this.notifications.push(message);
     const type = ["", "info", "success", "warning", "danger"];
 
     const color = Math.floor(Math.random() * 4 + 1);

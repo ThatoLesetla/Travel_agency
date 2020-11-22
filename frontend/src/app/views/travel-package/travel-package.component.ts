@@ -29,7 +29,7 @@ export class TravelPackageComponent implements OnInit {
 
   openDialog(packageID: number): void {
     const dialogRef = this.dialog.open(PackageEditModalComponent, {
-      width: '550px',
+      width: '650px',
       data: { packageID: packageID }
     });
   }

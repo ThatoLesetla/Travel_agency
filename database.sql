@@ -71,3 +71,23 @@ CREATE TABLE Packages
         (packageID) REFERENCES Packages
         (packageID)
 )
+
+CREATE TABLE Cars (
+    regNo varchar(15),
+    brand varchar(50),
+    model varchar(30) NOT NULL,
+    year number(4) NOT NULL,
+    colour varchar(15) NOT NULL,
+
+    Primary Key(regNo)
+)
+
+CREATE TABLE Reviews (
+    reviewID integer auto_increment,
+    description varchar(200) NOT NULL,
+    reviewDate DATETIME NOT NULL,
+    clientID integer(11) NOT NULL,
+
+    PRIMARY KEY(reviewID),
+    FOREIGN KEY(clientID) REFERENCES client(clientID)
+)

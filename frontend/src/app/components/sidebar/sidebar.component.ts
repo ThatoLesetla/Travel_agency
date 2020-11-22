@@ -12,10 +12,11 @@ export const ROUTES: RouteInfo[] = [
     { path: '/manager', title: 'Travel Manager', icon: 'library_books', class: ''},
     { path: '/reservation', title: 'Make Reservation',  icon: 'person', class: '' },
     { path: '/packages', title: 'Packages', icon: 'receipt', class: '' },
+    { path: '/reports', title: 'Reports', icon: 'report', class: '' },
     { path: '/table-list', title: 'Bookings', icon: 'content_paste', class: '' },
     { path: '/maps', title: 'Destinations', icon: 'location_on', class: '' },
     { path: '/typography', title: 'Flights', icon: 'library_books', class: '' },
-    { path: '/notifications', title: 'Notifications', icon: 'notifications', class: '' }
+    // { path: '/notifications', title: 'Notifications', icon: 'notifications', class: '' }
 ];
 
 @Component({

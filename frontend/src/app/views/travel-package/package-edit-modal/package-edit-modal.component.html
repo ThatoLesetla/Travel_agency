@@ -3,9 +3,108 @@
         Add Package
     </h6>
 
-    <div class="row">
-        <form>
-
+    <mat-dialog-content>
+        <form [formGroup]="packageForm" (ngSubmit)="onSubmit()"> 
+            <div class="form-group">
+                <label class="control-label col-md-12">Code: </label>
+                <div class="col-md-12">
+                    <div *ngIf="code.invalid && (code.dirty || code.touched)" class="text-danger">
+                        <div *ngIf="code.errors.required">
+                            Code is required.
+                        </div>
+                    </div>
+                    <input class="form-control" formControlName="code" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-12">Package Title: </label>
+                <div class="col-md-12">
+                    <div *ngIf="title.invalid && (title.dirty || title.touched)" class="text-danger">
+                        <div *ngIf="code.errors.required">
+                            Title is required.
+                        </div>
+                    </div>
+                    <input class="form-control" formControlName="title" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-12">Description: </label>
+                <div class="col-md-12">
+                    <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-danger">
+                        <div *ngIf="description.errors.required">
+                            Description is required.
+                        </div>
+                    </div>
+                    <textarea class="form-control" formControlName="code" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-12">Hotel: </label>
+                <div class="col-md-12">
+                    <select class="form-control">
+                        <option *ngFor="let hotel of hotels">{{ hotel.hotelName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-12">Duration: </label>
+                <div class="col-md-12">
+                    <div *ngIf="duration.invalid && (duration.dirty || duration.touched)" class="text-danger">
+                        <div *ngIf="duration.errors.required">
+                            Duration is required.
+                        </div>
+                    </div>
+                    <input class="form-control" formControlName="duration" placholder="e.g 6 days" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-12">Price: </label>
+                <div class="col-md-12">
+                    <div *ngIf="price.invalid && (price.dirty || price.touched)" class="text-danger">
+                        <div *ngIf="price.errors.required">
+                            Price is required.
+                        </div>
+                    </div>
+                    <input class="form-control" formControlName="price" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-12">Flight No: </label>
+                <div class="col-md-12">
+                    <div *ngIf="flightNo.invalid && (flightNo.dirty || flightNo.touched)" class="text-danger">
+                        <div *ngIf="flightNo.errors.required">
+                            Flight No is required.
+                        </div>
+                    </div>
+                    <input class="form-control" formControlName="flightNo" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-12">Transportation RegNo: </label>
+                <div class="col-md-12">
+                    <div *ngIf="transportation.invalid && (transportation.dirty || transportation.touched)" class="text-danger">
+                        <div *ngIf="transportation.errors.required">
+                            Transportation RegNo is required.
+                        </div>
+                    </div>
+                    <input class="form-control" formControlName="transportation" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-12">Discount Amount: </label>
+                <div class="col-md-12">
+                    <div *ngIf="discountAmnt.invalid && (discountAmnt.dirty || discountAmnt.touched)" class="text-danger">
+                        <div *ngIf="discountAmnt.errors.required">
+                            Discount Amount is required
+                        </div>
+                    </div>
+                    <input class="form-control" formControlName="discountAmnt" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Save</button>
+                <button class="btn btn-warning" (click)="onCancel()">Cancel</button>
+            </div>
         </form>
-    </div>
+    </mat-dialog-content> 
 </div>

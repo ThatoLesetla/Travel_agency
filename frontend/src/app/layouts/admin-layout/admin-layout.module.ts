@@ -1,5 +1,6 @@
 import { TravelPackageComponent } from './../../views/travel-package/travel-package.component';
 import { AdminManagerComponent } from './../../views/admin-manager/admin-manager.component';
+import { DialogOverviewExampleDialogComponent } from './../../views/admin-manager/admin-manager.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -22,6 +23,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { ClientModule } from '../../table-list/client.module';
 import { HomeComponent } from '../../views/home/home.component';
 import { LoginComponent } from '../../views/login/login.component';
+import {Ng2TelInputModule} from 'ng2-tel-input';
 @NgModule({
   imports: [
     CommonModule,
@@ -46,6 +48,7 @@ import { LoginComponent } from '../../views/login/login.component';
     UpgradeComponent,
     HomeComponent,
     AdminManagerComponent,
+    DialogOverviewExampleDialogComponent,
     TravelPackageComponent,
     LoginComponent
   ]

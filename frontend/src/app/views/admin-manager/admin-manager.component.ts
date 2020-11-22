@@ -24,7 +24,8 @@ export class AdminManagerComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private hotelService: HotelService) { }
+    private hotelService: HotelService,
+    private notifications: NotificationsService) { }
 
   ngOnInit(): void {
     this.hotelService.findAll().subscribe(data => {
@@ -39,8 +40,19 @@ export class AdminManagerComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-
+      
     });
+  }
+
+  removeHotel(id: any) {
+    this.hotelService.delete(id).subscribe(data => {
+      this.notifications.showNotification('top', 'right', `The hotel has been successfully removed from the database`);
+      const index = this.hotels.indexOf(id, 0);
+
+      this.hotels.splice(index);
+    }, error => {
+      this.notifications.showNotification('top', 'right', 'A error occured. Please try again later');
+    })
   }
 
 }
@@ -92,8 +104,14 @@ export class DialogOverviewExampleDialogComponent  {
     this.dialogRef.close();
   }
 
-  onSubmit(): void {
-    alert('test');
+  onSubmit() {
+   this.hotelService.create(this.hotelGroup.value).subscribe(data => {
+     this.notifications.showNotification('top', 'right', 'Hotel added successfully to travefy database');
+     this.onCancel();
+   }, error => {
+     this.notifications.showNotification('top', 'right', 'There was a error with adding hotel. Please try again later');
+     this.onCancel();
+   })
   }
 
   onDelete() {

@@ -1,3 +1,4 @@
+import { NotificationsService } from './../../services/notifications.service';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
@@ -10,17 +11,28 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
     private listTitles: any[];
+    notifications: string[] = [];
+    numNotifications: number;
     location: Location;
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(location: Location,  private element: ElementRef, private router: Router) {
+    constructor(
+        location: Location,  
+        private element: ElementRef, 
+        private router: Router,
+        private notificationService: NotificationsService
+        ) {
       this.location = location;
           this.sidebarVisible = false;
     }
 
     ngOnInit(){
+      // Assign notifications to notification menu
+      this.notifications = this.notificationService.notifications;
+      this.numNotifications = this.notificationService.notifications.length;
+      
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];

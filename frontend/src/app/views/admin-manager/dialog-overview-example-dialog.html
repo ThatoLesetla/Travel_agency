@@ -1,7 +1,7 @@
 <div mat-dialog-content>
     <h4><strong>Add Hotel</strong></h4>
 </div>
-<div mat-dialog-actions>
+<div>
     <form [formGroup]="hotelGroup" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label class="control-label col-md-12">Address: </label>
@@ -28,12 +28,12 @@
         <div class="form-group">
             <label class="control-label col-md-12">Price: </label>
             <div class="col-md-12">
-                <div *ngIf="price.invalid && (price.dirty || price.touched)" class="text-danger">
-                    <div *ngIf="price.errors.required">
+                <div *ngIf="pricePerNight.invalid && (pricePerNight.dirty || pricePerNight.touched)" class="text-danger">
+                    <div *ngIf="pricePerNight.errors.required">
                         price is required.
                     </div>
                 </div>
-                <input class="form-control" formControlName="price" required />
+                <input class="form-control" formControlName="pricePerNight" required />
             </div>
         </div>
         <div class="form-group">
@@ -64,9 +64,7 @@
                 <input class="form-control" formControlName="email" required />
             </div>
         </div>
-        <div class="form-group">
-            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Save</button>
-            <button class="btn btn-warning" (click)="onCancel()">Canel</button>
-        </div>
+            <button type="submit" [disabled]="!hotelGroup.valid" class="btn btn-danger pull-right">Submit</button>
+            <button type="button" class="btn btn-warning" (click)="onCancel()">Canel</button>
     </form>
 </div>

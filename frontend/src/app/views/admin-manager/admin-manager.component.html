@@ -20,12 +20,12 @@
                                             <div class="ripple-container"></div>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <a mat-button class="nav-link" href="#settings" data-toggle="tab">
                                             <i class="material-icons">airplanemode_active</i> Flight Reservations
                                             <div class="ripple-container"></div>
                                         </a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -35,6 +35,11 @@
                             <div class="tab-pane active" id="package">
                                 <div class="row">
                                     <button class="btn btn-primary" (click)="addHotel('test')">Add </button>
+                                </div>
+                                <div class="row">
+                                    <a href="#">Export To PDF </a> |
+                                    <a href="#">Export To Excel </a> |
+                                    <a href="#">Export To Word </a>
                                 </div>
                                 <table class="table">
                                     <thead>
@@ -91,7 +96,7 @@
                                                 <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">edit</i>
                                         </button>
-                                                <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                <button mat-raised-button type="button" matTooltip="Remove" (click)="removeHotel(hotel.hotelID)" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">close</i>
                                         </button>
                                             </td>
@@ -101,6 +106,15 @@
                             </div>
                             <div class="tab-pane" id="messages">
                                 <table class="table">
+                                    <thead>
+                                        <th>Mark</th>
+                                        <th>Registration</th>
+                                        <th>Brand</th>
+                                        <th>Model</th>
+                                        <th>Year</th>
+                                        <th>Colour</th>
+                                        <th>Actions</th>
+                                    </thead>
                                     <tbody>
                                         <tr>
                                             <td>
@@ -113,29 +127,21 @@
                                             </label>
                                                 </div>
                                             </td>
-                                            <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                            </td>
-                                            <td class="td-actions text-right">
-                                                <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
-                                            <i class="material-icons">edit</i>
-                                        </button>
-                                                <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
-                                            <i class="material-icons">close</i>
-                                        </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <td>
-                                                <div class="form-check">
-                                                    <label class="form-check-label">
-                                                <input class="form-check-input" type="checkbox" value="">
-                                                <span class="form-check-sign">
-                                                    <span class="check"></span>
-                                                </span>
-                                            </label>
-                                                </div>
+                                                Test
                                             </td>
-                                            <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                            <td>
+                                                Test
+                                            </td>
+                                            <td>
+                                                Test
+                                            </td>
+                                            <td>
+                                                Test
+                                            </td>
+                                            <td>
+                                                Test
+                                            </td>
                                             <td class="td-actions text-right">
                                                 <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
                                             <i class="material-icons">edit</i>

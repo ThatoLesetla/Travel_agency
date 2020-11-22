@@ -1,3 +1,4 @@
+import { PackageService } from './../services/package.service';
 import { HotelService } from './../services/hotel.service';
 import { FlightService } from './../services/flight.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,14 +15,17 @@ import { Hotel } from '../models/hotel-interface';
 export class DashboardComponent implements OnInit {
 
   public clients: Client[];
-  public hotels: Hotel[];
+  public hotels: Hotel[] = [];
   public numClients: number;
   public numAirports: number;
   public numHotels: number;
+  public numDestinations: number;
 
   constructor(private clientService: ClientService,
               private flights: FlightService,
-              private hotelService: HotelService) { }
+              private hotelService: HotelService,
+              private packageService: PackageService
+              ) { }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -85,7 +89,7 @@ export class DashboardComponent implements OnInit {
       this.flights.updateAirportListing(data);
     })
   /*===================== GET Airports End ========================= */
-    /*===================== GET Clients ========================= */
+  /*===================== GET Clients ========================= */
     this.clientService.findAll().subscribe(data => {
       this.clients = data;
       this.numClients = data.length;
@@ -96,6 +100,12 @@ export class DashboardComponent implements OnInit {
       this.numHotels = data.length;
     })
     /*===================== GET Clients End ========================= */
+
+    /*===================== GET Packages ========================= */
+    this.packageService.findAll().subscribe(data => {
+      this.numDestinations = data.length;
+    })
+    /*===================== GET Packages End ========================= */
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
