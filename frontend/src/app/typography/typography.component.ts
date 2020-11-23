@@ -9,10 +9,13 @@ import { FlightService } from '../services/flight.service';
 export class TypographyComponent implements OnInit {
 
   public listedAirports: any;
-  constructor(private airports: FlightService) { }
+  public flights: any;
+  constructor(private flightService: FlightService) { }
 
   ngOnInit() {
-    this.airports.listedAirports.subscribe((data) => this.listedAirports = data);
+    this.flightService.findAllFlights().subscribe(data => {
+      this.flights = data;
+    })
   }
 
   onSearch() {

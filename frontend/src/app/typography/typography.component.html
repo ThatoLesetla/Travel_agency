@@ -63,45 +63,51 @@
             <div class="col-md-12 ">
                 <div class="card ">
                     <div class="card-header card-header-danger ">
-                        <h4 class="card-title ">Clients</h4>
-                        <p class="card-category ">List of Clients</p>
+                        <h4 class="card-title ">Flights</h4>
+                        <p class="card-category ">List of Flights</p>
                     </div>
                     <div class="card-body ">
-                        <div class="table-responsive ">
+                        <div class="table-responsive scrollit">
                             <table class="table ">
                                 <thead class=" text-primary ">
                                     <th>
-                                        ID
+                                        ICAO 24
                                     </th>
                                     <th>
-                                        Code
+                                        Depature Airport
                                     </th>
                                     <th>
-                                        Name
+                                        Arrival Airport
                                     </th>
                                     <th>
-                                        City
+                                        Call Sign
                                     </th>
                                     <th>
-                                        Country Code
+                                        Departure Airport Distance
+                                    </th>
+                                    <th>
+                                        Actions
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let airport of listedAirports ">
+                                    <tr *ngFor="let flight of flights">
                                         <td>
-                                            {{ airport.airportId}}
+                                            {{ flight.icao24}}
                                         </td>
                                         <td>
-                                            {{ airport.code}}
+                                            {{ flight.estDepartureAirport}}
                                         </td>
                                         <td>
-                                            {{ airport.name}}
+                                            {{ flight.estArrivalAirport}}
                                         </td>
                                         <td>
-                                            {{ airport.city }}
+                                            {{ flight.callsign }}
                                         </td>
                                         <td>
-                                            {{ airport.countryCode}}
+                                            {{ flight.estDepartureAirportHorizDistance}}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary" (click)="onView()">View</button>
                                         </td>
                                     </tr>
                                 </tbody>

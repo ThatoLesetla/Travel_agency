@@ -84,9 +84,9 @@ export class DashboardComponent implements OnInit {
   };
   ngOnInit() {
   /*===================== GET Airports Start ========================= */
-    this.flights.searchAirportsByRadius().subscribe(data => {
+    this.flights.findAllFlights().subscribe(data => {
       this.numAirports = data.length;
-      this.flights.updateAirportListing(data);
+      
     })
   /*===================== GET Airports End ========================= */
   /*===================== GET Clients ========================= */

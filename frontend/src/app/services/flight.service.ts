@@ -6,8 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'x-rapidapi-key': '74b4074363msh7f72a6bd77335e5p174d1ejsn6cd557899437',
-    'x-rapidapi-host': 'cometari-airportsfinder-v1.p.rapidapi.com'
   })
 }
 @Injectable({
@@ -20,11 +18,8 @@ export class FlightService {
 
   constructor(private http: HttpClient) { }
 
-  searchAirportsByRadius(): Observable<any> {
-    return this.http.get<any>(`https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-radius?radius=50&lng=-157.895277&lat=21.265600`, httpOptions);
-  }
-
-  updateAirportListing(airports: any) {
-    this.airports.next(airports);
+  // Get flights from 12pm to 1pm on Jan 29 2018:
+  findAllFlights(): Observable<any> {
+    return this.http.get<any>('https://tlesetla:34Tg02Ymsr@@opensky-network.org/api/flights/all?begin=1517227200&end=1517230800');
   }
 }
