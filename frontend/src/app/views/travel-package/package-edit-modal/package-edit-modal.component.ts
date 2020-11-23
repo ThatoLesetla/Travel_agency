@@ -1,7 +1,9 @@
+import { CarService } from './../../../services/car.service';
 import { NotificationsService } from './../../../services/notifications.service';
 import { PackageService } from './../../../services/package.service';
 import { HotelService } from './../../../services/hotel.service';
 import { Hotel } from './../../../models/hotel-interface';
+import { Car } from './../../../models/car-interface';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -15,15 +17,16 @@ import { MatDialog } from '@angular/material/dialog';
 export class PackageEditModalComponent implements OnInit {
 
   hotels: Hotel[] = [];
+  cars: Car[] = [];
   constructor(
     private matDialog: MatDialog,
     private hotelService: HotelService,
     private packageService: PackageService,
-    private notificationService: NotificationsService
+    private notificationService: NotificationsService,
+    private carService: CarService
   ) { }
 
   packageForm = new FormGroup({
-    code: new FormControl('', Validators.required),
     title: new FormControl('', [Validators.required, Validators.pattern('^$|^[A-Za-z0-9]+')]),
     description: new FormControl('', Validators.required),
     hotel: new FormControl('', Validators.required),
@@ -37,6 +40,10 @@ export class PackageEditModalComponent implements OnInit {
   ngOnInit(): void {
     this.hotelService.findAll().subscribe(data => {
       this.hotels = data; 
+    });
+
+    this.carService.findAll().subscribe(data => {
+      this.cars = data;
     })
   }
 
@@ -49,7 +56,7 @@ export class PackageEditModalComponent implements OnInit {
   }
 
   onCancel() {
-    this.matDialog.closeAll();
+    
   }
 
   get code() {

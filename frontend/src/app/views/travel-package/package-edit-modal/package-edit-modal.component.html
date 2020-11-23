@@ -6,17 +6,6 @@
     <mat-dialog-content>
         <form [formGroup]="packageForm" (ngSubmit)="onSubmit()"> 
             <div class="form-group">
-                <label class="control-label col-md-12">Code: </label>
-                <div class="col-md-12">
-                    <div *ngIf="code.invalid && (code.dirty || code.touched)" class="text-danger">
-                        <div *ngIf="code.errors.required">
-                            Code is required.
-                        </div>
-                    </div>
-                    <input class="form-control" formControlName="code" required />
-                </div>
-            </div>
-            <div class="form-group">
                 <label class="control-label col-md-12">Package Title: </label>
                 <div class="col-md-12">
                     <div *ngIf="title.invalid && (title.dirty || title.touched)" class="text-danger">
@@ -85,12 +74,9 @@
             <div class="form-group">
                 <label class="control-label col-md-12">Transportation RegNo: </label>
                 <div class="col-md-12">
-                    <div *ngIf="transportation.invalid && (transportation.dirty || transportation.touched)" class="text-danger">
-                        <div *ngIf="transportation.errors.required">
-                            Transportation RegNo is required.
-                        </div>
-                    </div>
-                    <input class="form-control" formControlName="transportation" required />
+                    <select class="form-control">
+                        <option *ngFor="let car of cars">Make: {{car.make}} | Model {{ car.model}}</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
@@ -101,12 +87,11 @@
                             Discount Amount is required
                         </div>
                     </div>
-                    <input class="form-control" formControlName="discountAmnt" required />
+                    <input type="number" class="form-control" formControlName="discountAmnt" minlength="0" maxlength="1000" placeholder="Enter discount amount" required />
                 </div>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Save</button>
-                <button class="btn btn-warning" (click)="onCancel()">Cancel</button>
             </div>
         </form>
     </mat-dialog-content> 

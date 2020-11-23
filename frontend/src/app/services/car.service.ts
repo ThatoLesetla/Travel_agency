@@ -26,6 +26,10 @@ export class CarService {
     return this.http.get<Car[]>(`${environment.url}/cars`);
   }
 
+  findOne(regNo: number): Observable<Car> {
+    return this.http.get<Car>(`${environment.url}/cars/${regNo}`);
+  }
+
   // Delete Car
   delete(regNo: number) {
     return this.http.delete(`${environment.url}/cars/${regNo}`, httpOptions);

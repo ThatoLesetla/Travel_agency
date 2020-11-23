@@ -29,11 +29,15 @@ export class HotelService {
   }
 
 
-  findOne(): Observable<Hotel> {
-    return this.http.get<Hotel>(`${environment.url}`);
+  findOne(hotelID: any): Observable<Hotel> {
+    return this.http.get<Hotel>(`${environment.url}/hotels/${hotelID}`);
   }
 
   delete(id: number) {
     return this.http.delete(`${environment.url}/hotels/${id}`);
+  }
+
+  update(hotel: Hotel) {
+    return this.http.put(`${environment.url}/hotels/${hotel.hotelID}`, hotel);
   }
 }

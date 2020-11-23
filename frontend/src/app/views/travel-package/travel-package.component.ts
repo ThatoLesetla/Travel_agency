@@ -23,7 +23,6 @@ export class TravelPackageComponent implements OnInit {
   ngOnInit(): void {
     this.packageService.findAll().subscribe(data => {
       this.packages = data;
-      console.log(data);
     });
   }
 
