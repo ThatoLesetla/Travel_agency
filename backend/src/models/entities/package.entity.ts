@@ -22,6 +22,9 @@ export class Packages {
     price: Number;
 
     @Column()
+    country: string;
+
+    @Column()
     flightCode: string;
     
     @Column()

@@ -1,0 +1,66 @@
+<div>
+  <div mat-dialog-content>
+      <h4><strong>Book your Trip</strong></h4>
+  </div>
+  <div>
+      <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+              <label class="control-label col-md-12">Start Date: </label>
+              <div class="col-md-12">
+                  <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)" class="text-danger">
+                      <div *ngIf="startDate.errors.required">
+                          Start Date is required
+                      </div>
+                  </div>
+                  <input type="date" class="form-control" formControlName="startDate" required min="2020-11-15" max="2020-12-04"/>
+              </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-12">End Date: </label>
+            <div class="col-md-12">
+                <div *ngIf="endDate.invalid && (endDate.dirty || endDate.touched)" class="text-danger">
+                    <div *ngIf="endDate.errors.required">
+                       End Date is required
+                    </div>
+                </div>
+                <input type="date" class="form-control" formControlName="endDate" required min="2020-11-15" max="2020-12-04"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-12">Children: </label>
+            <div class="col-md-12">
+                <div *ngIf="children.invalid && (children.dirty || children.touched)" class="text-danger">
+                    <div *ngIf="children.errors.required">
+                       Number of children is required
+                    </div>
+                </div>
+                <input type="number" class="form-control" formControlName="children" required min="0" max="5"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-12">Adults: </label>
+            <div class="col-md-12">
+                <div *ngIf="adults.invalid && (adults.dirty || adults.touched)" class="text-danger">
+                    <div *ngIf="adults.errors.required">
+                       Number of adults is required
+                    </div>
+                </div>
+                <input type="number" class="form-control" formControlName="adults" required min="0" max="4" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-12">Rooms: </label>
+            <div class="col-md-12">
+                <div *ngIf="rooms.invalid && (rooms.dirty || rooms.touched)" class="text-danger">
+                    <div *ngIf="rooms.errors.required">
+                       Rooms is required
+                    </div>
+                </div>
+                <input type="number" class="form-control" formControlName="rooms" required min="0" max="3"/>
+            </div>
+          </div>
+              <button type="submit" [disabled]="!bookingForm.valid" class="btn btn-danger pull-right">Checkout</button>
+              <button type="button" class="btn btn-warning" (click)="onCancel()">Canel</button>
+      </form>
+  </div>
+</div>

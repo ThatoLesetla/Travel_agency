@@ -25,6 +25,7 @@ export class PackageService {
     description: undefined,
     hotelID: undefined,
     duration: undefined,
+    country: undefined,
     price: undefined,
     flightCode: undefined,
     transportationID: undefined,
