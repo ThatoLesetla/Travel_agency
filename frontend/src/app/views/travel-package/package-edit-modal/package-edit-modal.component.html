@@ -27,14 +27,14 @@
                             Description is required.
                         </div>
                     </div>
-                    <textarea class="form-control" formControlName="code" required></textarea>
+                    <textarea class="form-control" formControlName="description" required></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-12">Hotel: </label>
                 <div class="col-md-12">
-                    <select class="form-control">
-                        <option *ngFor="let hotel of hotels">{{ hotel.hotelName}}</option>
+                    <select (change)="selectHotel($event.target.value)" class="form-control">
+                        <option *ngFor="let hotel of hotels" value="{{hotel.hotelID}}">{{ hotel.hotelName}}</option>
                     </select>
                 </div>
             </div>
@@ -46,52 +46,44 @@
                             Duration is required.
                         </div>
                     </div>
-                    <input class="form-control" formControlName="duration" placholder="e.g 6 days" required />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-12">Price: </label>
-                <div class="col-md-12">
-                    <div *ngIf="price.invalid && (price.dirty || price.touched)" class="text-danger">
-                        <div *ngIf="price.errors.required">
-                            Price is required.
-                        </div>
-                    </div>
-                    <input class="form-control" formControlName="price" required />
+                    <input type="number" class="form-control" formControlName="duration" placholder="Enter Duration in days" min="0" max="31" required />
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-12">Flight No: </label>
                 <div class="col-md-12">
-                    <div *ngIf="flightNo.invalid && (flightNo.dirty || flightNo.touched)" class="text-danger">
-                        <div *ngIf="flightNo.errors.required">
-                            Flight No is required.
-                        </div>
-                    </div>
-                    <input class="form-control" formControlName="flightNo" required />
+                    <select (change)="selectFlight($event.target.value)" class="form-control">
+                        <option class="form-control" *ngFor="let code of flightCodes">{{ code.icao24 }}</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-12">Transportation RegNo: </label>
                 <div class="col-md-12">
-                    <select class="form-control">
-                        <option *ngFor="let car of cars">Make: {{car.make}} | Model {{ car.model}}</option>
+                    <select (change)="selectCar($event.target.value)" class="form-control">
+                        <option *ngFor="let car of cars" value="car.regNo">Make: {{car.make}} | Model {{ car.model}}</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-12">Discount Amount: </label>
+                <label class="control-label col-md-12">Discount Amount %: </label>
                 <div class="col-md-12">
                     <div *ngIf="discountAmnt.invalid && (discountAmnt.dirty || discountAmnt.touched)" class="text-danger">
                         <div *ngIf="discountAmnt.errors.required">
                             Discount Amount is required
                         </div>
                     </div>
-                    <input type="number" class="form-control" formControlName="discountAmnt" minlength="0" maxlength="1000" placeholder="Enter discount amount" required />
+                    <input type="number" class="form-control" formControlName="discountAmnt" min="0" max="100" placeholder="Enter percentage of discount" required />
                 </div>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary" type="submit">Save</button>
+                <label class="control-label col-md-12">Total Price: </label>
+                <div class="col-md-12">
+                    <input type="text" class="form-control" formControlName="price" disabled [(ngModel)]="package_price" />
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabeld]="!packageForm.valid"class="btn btn-primary" type="submit">Save</button>
             </div>
         </form>
     </mat-dialog-content> 

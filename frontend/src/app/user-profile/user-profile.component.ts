@@ -17,8 +17,8 @@ export class UserProfileComponent implements OnInit {
   private newClient: Client;
 
   clientProfile = new FormGroup({
-    'name': new FormControl('', Validators.required),
-    'surname': new FormControl('', Validators.required),
+    'name': new FormControl('', [Validators.required,  Validators.pattern('^$|^[A-Za-z0-9]+')]),
+    'surname': new FormControl('', [Validators.required,  Validators.pattern('^$|^[A-Za-z0-9]+')]),
     'email': new FormControl('', [Validators.required, Validators.email]),
     'phone': new FormControl('', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]),
     'address': new FormControl('', Validators.required),

@@ -23,12 +23,10 @@ export class PackageService {
     id: undefined,
     title: undefined,
     description: undefined,
-    location: undefined,
     hotelID: undefined,
     duration: undefined,
     price: undefined,
-    currency: undefined,
-    flightID: undefined,
+    flightCode: undefined,
     transportationID: undefined,
     discountAmnt: undefined
   });

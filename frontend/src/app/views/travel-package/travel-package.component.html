@@ -7,11 +7,11 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card-body">
-                        <table class="table">
-                            <thead>
+                    <div class="card-body scrollit">
+                        <table class="table table-striped">
+                            <thead class="thead-dark"> 
                                 <th>
-                                    Code
+                                    Package Code
                                 </th>
                                 <th>
                                     Title
@@ -29,7 +29,7 @@
                                     Price
                                 </th>
                                 <th>
-                                    FlightNo
+                                    Flight Code
                                 </th>
                                 <th>
                                     Transportation
@@ -53,19 +53,19 @@
                                         {{ package.hotelID }}
                                     </td>
                                     <td>
-                                        {{ package.duration }}
+                                        {{ package.duration }} days
                                     </td>
                                     <td>
                                         {{ package.price }}
                                     </td>
                                     <td>
-                                        {{ package.flightID }}
+                                        {{ package.flightCode }}
                                     </td>
                                     <td>
                                         {{ package.transportationID }}
                                     </td>
                                     <td>
-                                        {{ package.discountAmnt }}
+                                        {{ package.discountAmnt }} %
                                     </td>
                                 </tr>
                             </tbody>

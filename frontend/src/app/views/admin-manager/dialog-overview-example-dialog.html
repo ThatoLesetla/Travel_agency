@@ -27,18 +27,16 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-12">Currency: </label>
+                <label class="control-label col-md-12">Country: </label>
                 <div class="col-md-12">
-                    <div *ngIf="currency.invalid && (currency.dirty || currency.touched)" class="text-danger" required>
-                        <div *ngIf="currency.errors.required">
-                            Curreny is required.
-                        </div>
-                    </div>
-                    <input class="form-control" formControlName="currency" required />
+                    <select [(ngModel)]="selectedCountry" class="form-control">
+                        <option *ngFor="let country of countries"> {{country.name }}</option>
+                    </select>
                 </div>
             </div>
+
             <div class="form-group">
-                <label class="control-label col-md-12">Price: </label>
+                <label class="control-label col-md-12">Price per night: </label>
                 <div class="col-md-12">
                     <div *ngIf="pricePerNight.invalid && (pricePerNight.dirty || pricePerNight.touched)" class="text-danger">
                         <div *ngIf="pricePerNight.errors.required">
@@ -109,17 +107,7 @@
                     <input class="form-control" formControlName="address" [(ngModel)]="hotel.address" required />
                 </div>
             </div>
-            <div class="form-group">
-                <label class="control-label col-md-12">Currency: </label>
-                <div class="col-md-12">
-                    <div *ngIf="currency.invalid && (currency.dirty || currency.touched)" class="text-danger" required>
-                        <div *ngIf="currency.errors.required">
-                            Curreny is required.
-                        </div>
-                    </div>
-                    <input class="form-control" formControlName="currency" [(ngModel)]="hotel.currency" required />
-                </div>
-            </div>
+        
             <div class="form-group">
                 <label class="control-label col-md-12">Price: </label>
                 <div class="col-md-12">

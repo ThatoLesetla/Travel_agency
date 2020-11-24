@@ -3,7 +3,8 @@ export interface Hotel {
     address: string,
     hotelName: string;
     pricePerNight: number,
-    currency: string,
+    country: string,
+    city: string,
     phone: number,
     email: string
 }

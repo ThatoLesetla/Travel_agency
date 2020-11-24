@@ -1,3 +1,4 @@
+import { CountryService } from './../../services/country.service';
 import { CarService } from '../../services/car.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
@@ -117,6 +118,8 @@ export class DialogOverviewExampleDialogComponent implements OnInit  {
   public hotelID: string;
   private isUpdate = true;
   public hotel: Hotel;
+  public countries: any;
+  public selectedCountry: string = 'South Africa';
 
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialogComponent>,
@@ -124,9 +127,15 @@ export class DialogOverviewExampleDialogComponent implements OnInit  {
     private router: Router,
     private hotelService: HotelService,
     private notifications: NotificationsService,
+    private countryService: CountryService
   ) {}
 
   ngOnInit() {
+    this.countries = this.countryService.findAll().subscribe(data => {
+      this.countries = data;
+      
+    });
+
     if (this.dialogData.isUpdate == true) {
       this.isUpdate = false;
 
@@ -142,7 +151,8 @@ export class DialogOverviewExampleDialogComponent implements OnInit  {
   hotelGroup = new FormGroup({
     hotelName: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
-    currency: new FormControl('', Validators.required),
+    country: new FormControl(this.selectedCountry),
+    city: new FormControl(''),
     pricePerNight: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required)
@@ -154,10 +164,6 @@ export class DialogOverviewExampleDialogComponent implements OnInit  {
 
   get hotelName() {
     return this.hotelGroup.get('hotelName');
-  }
-
-  get currency() {
-    return this.hotelGroup.get('currency');
   }
 
   get pricePerNight() {
@@ -177,13 +183,15 @@ export class DialogOverviewExampleDialogComponent implements OnInit  {
   }
 
   onSubmit() {
-   this.hotelService.create(this.hotelGroup.value).subscribe(data => {
-     this.notifications.showNotification('top', 'right', 'Hotel added successfully to travefy database');
-     this.onCancel();
-   }, error => {
-     this.notifications.showNotification('top', 'right', 'There was a error with adding hotel. Please try again later');
-     this.onCancel();
-   })
+    this.hotel = this.hotelGroup.value;
+    this.hotel.country = this.selectedCountry;
+    this.hotelService.create(this.hotelGroup.value).subscribe(data => {
+      this.notifications.showNotification('top', 'right', 'Hotel added successfully to travefy database');
+      this.onCancel();
+    }, error => {
+      this.notifications.showNotification('top', 'right', 'There was a error with adding hotel. Please try again later');
+      this.onCancel();
+    })
   }
 
   onUpdate() {

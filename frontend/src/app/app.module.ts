@@ -41,7 +41,7 @@ import { ReportComponent } from './views/report/report.component';
     MatDialogModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: ''
+      apiKey: 'AIzaSyABCSgpnouVjEz8pqwxGj1qeg7EZIZaFBg'
     })
   ],
   declarations: [

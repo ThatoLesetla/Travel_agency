@@ -16,7 +16,10 @@ export class Hotel {
     pricePerNight: number;
 
     @Column()
-    currency: string;
+    country: string;
+
+    @Column()
+    city: string;
 
     @Column()
     phone: number;

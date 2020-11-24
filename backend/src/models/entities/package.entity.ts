@@ -13,9 +13,6 @@ export class Packages {
     description: string;
     
     @Column()
-    location: string;
-    
-    @Column()
     hotelID: Number;
     
     @Column()
@@ -23,13 +20,9 @@ export class Packages {
     
     @Column()
     price: Number;
-    
+
     @Column()
-    currency: Number;
-    
-    
-    @Column()
-    flightID: Number;
+    flightCode: string;
     
     @Column()
     transportationID: string;

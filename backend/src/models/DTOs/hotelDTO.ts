@@ -3,7 +3,8 @@ export class HotelDTO {
     readonly hotelName: string;
     readonly address: string;
     readonly pricePerNight: number;
-    readonly currency: string;
+    readonly country: string;
+    readonly city: string;
     readonly phone: number;
     readonly email: string;
 }
