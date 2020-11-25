@@ -1,4 +1,3 @@
-import { BookingComponent } from './../../../frontend/src/app/views/home/home.component';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -24,6 +23,7 @@ import { RegisterComponent } from './Components/register/register.component';
     AppComponent,
     NavbarComponent,
     HomeComponent,
+    HomeLoginComponent,
     BookingComponent,
     JobCardsComponent,
     ServicesComponent,

@@ -1,0 +1,34 @@
+<div>
+  <div mat-dialog-content>
+      <h4><strong>Login</strong></h4>
+  </div>
+  <div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+              <label class="control-label col-md-12">Username </label>
+              <div class="col-md-12">
+                  <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-danger">
+                      <div *ngIf="username.errors.required">
+                          Username is required
+                      </div>
+                  </div>
+                  <input type="text" class="form-control" formControlName="username" required />
+              </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-12">Password: </label>
+            <div class="col-md-12">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                    <div *ngIf="password.errors.required">
+                       password is required
+                    </div>
+                </div>
+                <input type="text" class="form-control" formControlName="password" required />
+                <small *ngIf="isLogin" class="text-danger">Incorrect email or password</small>
+            </div>
+          </div>
+              <button type="submit" [disabled]="!loginForm.valid" class="btn btn-danger pull-right">Login</button>
+              <button type="button" class="btn btn-warning" (click)="onCancel()">Canel</button>
+      </form>
+  </div>
+</div>

@@ -1,0 +1,251 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-tabs card-header-danger">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <span class="nav-tabs-title">Report Toolset:</span>
+                                <ul class="nav nav-tabs" data-tabs="tabs">
+                                    <li class="nav-item">
+                                        <a mat-button class="nav-link active" href="#package" data-toggle="tab">
+                                            <i class="material-icons">library_books</i> Detailed Report
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a mat-button class="nav-link" href="#messages" data-toggle="tab">
+                                            <i class="material-icons">receipt</i> Summary Report
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a mat-button class="nav-link" href="#settings" data-toggle="tab">
+                                            <i class="material-icons">report</i> Exception Report
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="package">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Start Date: </label>
+                                    <input type="date" class="form-control" [(ngModel)]="startDate" max="2020-11-25">
+                                    <label>End Date: </label>
+                                    <input type="date" class="form-control" [(ngModel)]="endDate" max="2020-11-25">
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <a href="#">Export To PDF </a> |
+                                    <a href="#">Export To Excel </a> |
+                                    <a href="#">Export To Word </a>
+                                </div>
+                                <table class="table ">
+                                    <thead class=" text-primary ">
+                                        <th>
+                                            ICAO 24
+                                        </th>
+                                        <th>
+                                            Depature Airport
+                                        </th>
+                                        <th>
+                                            Arrival Airport
+                                        </th>
+                                        <th>
+                                            Call Sign
+                                        </th>
+                                        <th>
+                                            Departure Airport Distance
+                                        </th>
+                                        <th>
+                                            Actions
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let flight of flights">
+                                            <td>
+                                                {{ flight.icao24}}
+                                            </td>
+                                            <td>
+                                                {{ flight.estDepartureAirport}}
+                                            </td>
+                                            <td>
+                                                {{ flight.estArrivalAirport}}
+                                            </td>
+                                            <td>
+                                                {{ flight.callsign }}
+                                            </td>
+                                            <td>
+                                                {{ flight.estDepartureAirportHorizDistance}} KM
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-primary" (click)="onView()">View</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="messages">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Start Date: </label>
+                                        <input type="date" class="form-control" [(ngModel)]="startDate" max="2020-11-25">
+                                        <label>End Date: </label>
+                                        <input type="date" class="form-control" [(ngModel)]="endDate" max="2020-11-25">
+                                        <button class="btn btn-primary" (click)="onSearch()">Search</button>
+                                    </div>
+                                      
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card card-stats">
+                                        <div class="card-header card-header-warning card-header-icon">
+                                            <div class="card-icon">
+                                                <i class="material-icons">explore</i>
+                                            </div>
+                                            <p class="card-category">Destination</p>
+                                            <h3 class="card-title">{{ numDestinations }}
+                                            </h3>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="stats">
+                                                <i class="material-icons text-danger">warning</i>
+                                                <a href="javascript:void(0)">View destinations</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card card-stats">
+                                        <div class="card-header card-header-success card-header-icon">
+                                            <div class="card-icon">
+                                                <i class="material-icons">store</i>
+                                            </div>
+                                            <p class="card-category">Hotels</p>
+                                            <h3 class="card-title">{{ numHotels }}</h3>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="stats">
+                                                <i class="material-icons">date_range</i> Last 24 Hours
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card card-stats">
+                                        <div class="card-header card-header-danger card-header-icon">
+                                            <div class="card-icon">
+                                                <i class="fa fa-plane"></i>
+                                            </div>
+                                            <p class="card-category">Airports</p>
+                                            <h3 class="card-title">{{ numAirports }}</h3>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="stats">
+                                                <i class="material-icons">local_offer</i> Tracked from Open Sky flights
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="card card-stats">
+                                        <div class="card-header card-header-info card-header-icon">
+                                            <div class="card-icon">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                            <p class="card-category">Clients</p>
+                                            <h3 class="card-title">{{ numClients }}</h3>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="stats">
+                                                <i class="material-icons">update</i> Just Updated
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="settings">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                                </div>
+                                            </td>
+                                            <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                            <td class="td-actions text-right">
+                                                <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                                <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="" checked>
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                                </div>
+                                            </td>
+                                            <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                            </td>
+                                            <td class="td-actions text-right">
+                                                <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                                <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="" checked>
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                                </div>
+                                            </td>
+                                            <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                            <td class="td-actions text-right">
+                                                <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                                <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

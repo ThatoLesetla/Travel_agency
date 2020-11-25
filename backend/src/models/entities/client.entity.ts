@@ -28,6 +28,9 @@ export class Client {
     password: string;
 
     @Column()
+    userType: string;
+
+    @Column()
     updateDate: Date;
 }
 @Entity()

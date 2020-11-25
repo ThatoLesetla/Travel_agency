@@ -7,5 +7,6 @@ export interface Client {
     address: string,
     postalCode: number,
     password: string,
+    
     updateDate: Date
 }

@@ -1,3 +1,4 @@
+import { ReportsComponent } from './../../reports/reports.component';
 import { LoginComponent } from '../../views/login/login.component';
 import { TravelPackageComponent } from './../../views/travel-package/travel-package.component';
 import { AdminManagerComponent } from './../../views/admin-manager/admin-manager.component';
@@ -25,5 +26,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'check',           component: HomeComponent},
     { path: 'manager',        component: AdminManagerComponent},
     { path: 'packages', component: TravelPackageComponent},
-    { path: 'login', component: LoginComponent}
+    { path: 'reports', component: ReportsComponent}
 ];

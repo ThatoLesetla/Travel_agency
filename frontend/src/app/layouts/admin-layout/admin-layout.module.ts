@@ -1,3 +1,4 @@
+import { ReportsComponent } from './../../reports/reports.component';
 import { TravelPackageComponent } from './../../views/travel-package/travel-package.component';
 import { AdminManagerComponent } from './../../views/admin-manager/admin-manager.component';
 import { DialogOverviewExampleDialogComponent } from './../../views/admin-manager/admin-manager.component';
@@ -22,7 +23,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { ClientModule } from '../../table-list/client.module';
-import { HomeComponent } from '../../views/home/home.component';
+import { HomeComponent, HomeLoginComponent, BookingComponent, RegisterComponent } from '../../views/home/home.component';
 import { LoginComponent } from '../../views/login/login.component';
 import {Ng2TelInputModule} from 'ng2-tel-input';
 @NgModule({
@@ -48,11 +49,13 @@ import {Ng2TelInputModule} from 'ng2-tel-input';
     NotificationsComponent,
     UpgradeComponent,
     HomeComponent,
+    HomeLoginComponent, BookingComponent,RegisterComponent,
     AdminManagerComponent,
     DialogOverviewExampleDialogComponent,
     CarDialogComponent,
     TravelPackageComponent,
-    LoginComponent
+    LoginComponent,
+    ReportsComponent
   ]
 })
 

@@ -57,6 +57,10 @@ export class ClientService {
     return this.http.put(`${environment.url}/clients/${client.clientID}`, client);
   }
 
+  authenticateUser(login: any) {
+    return this.http.post<any>(`${environment.url}/login`, {username: login.username, password: login.password});
+  }
+
   changeUser(client: Client) {
     this.user.next(client);
   }

@@ -7,5 +7,6 @@ export class clientDTO {
     readonly address: string;
     readonly postalCode: number;
     readonly password: string;
+    readonly userType: string;
     readonly updateDate: Date;
 }

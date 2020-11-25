@@ -33,4 +33,14 @@ export class ClientService {
     async findByEmail(clientEmail: string): Promise<any> {
         return await this.clientRepository.find({ where: { email: clientEmail}});
     }
+
+    async login(credentials: any): Promise<any> {
+        let client = await this.clientRepository.findOne({ where: { email: credentials.username}});
+    
+        if (client.password == credentials.password) {
+            return client;
+        } else {
+            return null;
+        }
+    }
 }
