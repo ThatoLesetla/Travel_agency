@@ -1,3 +1,4 @@
+import { BookingsModule } from './booking.module';
 import { HotelsModule } from './hotel.module';
 import { PackageModule } from './models/package.module';
 import { ClientsModule } from './client.module';
@@ -30,6 +31,7 @@ import { BookingService } from './services/booking/booking.service';
       entities: [Car, Client, Packages, Hotel, Booking],
       synchronize: true,
     }),
+    BookingsModule,
     CarsModule,
     ClientsModule,
     PackageModule,

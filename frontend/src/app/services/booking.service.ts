@@ -13,12 +13,12 @@ export class BookingService {
   constructor(private http: HttpClient) { }
 
   create(booking: Booking): Observable<Booking> {
-    return this.http.post<Booking>(`${environment.url}/bookings`, booking);
+    return this.http.post<Booking>(`${environment.url}/booking`, booking);
   }
 
   // Get:
   findAll(): Observable<Booking[]> {
-    return this.http.get<Booking[]>(`${environment.url}/Bookings`);
+    return this.http.get<Booking[]>(`${environment.url}/booking`);
   }
 
   findOne(id: number): Observable<Booking> {

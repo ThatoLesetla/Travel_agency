@@ -74,6 +74,7 @@ export class BookingComponent {
       })
     } else {
       this.dialogRef.close();
+      alert('Please Sign in first');
       const dialog = this.dialog.open(HomeLoginComponent, {
         width: '500px'
       })
