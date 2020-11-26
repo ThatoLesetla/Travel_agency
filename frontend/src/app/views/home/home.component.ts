@@ -5,6 +5,7 @@ import { PackageService } from '../../services/package.service';
 import { Component, OnInit } from '@angular/core';
 import { Package } from '../../models/package';
 import { Router } from '@angular/router';
+import { Client } from '../../models/client-interface';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,7 +18,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private packageService: PackageService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,18 +28,6 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  login() {
-    const dialogRef = this.dialog.open(HomeLoginComponent, {
-      width: '500px'
-    })
-  }
-
-  register() {
-    const dialogRef = this.dialog.open(RegisterComponent, {
-      width: '500px'
-    })
-  }
-  
   book() {
     const dialogRef = this.dialog.open(BookingComponent, {
       width: '500px'
@@ -91,7 +81,7 @@ export class BookingComponent {
 export class HomeLoginComponent {
 
   isLogin = false;
-  
+  client: Client;
   constructor(
     public dialogRef: MatDialogRef<BookingComponent>,
     private router: Router,
@@ -117,13 +107,18 @@ export class HomeLoginComponent {
       if (data == null) {
         this.isLogin = true;
       } else {
-        
+        this.client = data;
+        localStorage.setItem('clientID', data.clientID);
         if (data.userType == 'admin') {
           this.router.navigate(['/dashboard']);
         } 
         this.dialogRef.close();
       }
     })
+  }
+
+  onCancel() {
+    this.dialogRef.close();
   }
 }
 

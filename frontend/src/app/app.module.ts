@@ -22,6 +22,7 @@ import { PackageEditModalComponent } from './views/travel-package/package-edit-m
 import { LoginModalComponent } from './views/login/login-modal/login-modal.component';
 import { ReportComponent } from './views/report/report.component';
 import { CheckoutComponent } from './views/checkout/checkout.component';
+import { BookingsComponent } from './views/bookings/bookings.component';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { CheckoutComponent } from './views/checkout/checkout.component';
     PackageEditModalComponent,
     LoginModalComponent,
     ReportComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    BookingsComponent
 
   ],
   providers: [],

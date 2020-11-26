@@ -1,3 +1,4 @@
+import { ComponentsModule } from './../../components/components.module';
 import { ReportsComponent } from './../../reports/reports.component';
 import { TravelPackageComponent } from './../../views/travel-package/travel-package.component';
 import { AdminManagerComponent } from './../../views/admin-manager/admin-manager.component';
@@ -38,7 +39,8 @@ import {Ng2TelInputModule} from 'ng2-tel-input';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    ClientModule
+    ClientModule,
+    ComponentsModule
   ],
   declarations: [
     DashboardComponent,

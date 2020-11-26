@@ -1,3 +1,4 @@
+import { BookingsComponent } from './views/bookings/bookings.component';
 import { CheckoutComponent } from './views/checkout/checkout.component';
 import { LoginComponent } from './views/login/login.component';
 import { HomeComponent } from './views/home/home.component';
@@ -32,6 +33,10 @@ const routes: Routes =[
   {
     path: 'checkout',
     component: CheckoutComponent
+  },
+  {
+    path: 'my-bookings',
+    component: BookingsComponent
   }
 ];
 

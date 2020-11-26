@@ -13,7 +13,10 @@ import { Connection } from 'typeorm';
 import { Client } from './models/entities/client.entity';
 import { Packages } from './models/entities/package.entity';
 import { Hotel } from './models/entities/hotel.entity';
-import { Car } from './models/entities/client.entity';
+import { Car, Booking } from './models/entities/client.entity';
+
+import { BookingController } from './controllers/booking/booking.controller';
+import { BookingService } from './services/booking/booking.service';
 
 @Module({
   imports: [
@@ -24,13 +27,14 @@ import { Car } from './models/entities/client.entity';
       username: 'root',
       password: '',
       database: 'travefy',
-      entities: [Car, Client, Packages, Hotel],
+      entities: [Car, Client, Packages, Hotel, Booking],
       synchronize: true,
     }),
     CarsModule,
     ClientsModule,
     PackageModule,
-    HotelsModule
+    HotelsModule,
+
   ],
   controllers: [AppController],
   providers: [AppService],

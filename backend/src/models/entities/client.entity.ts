@@ -54,3 +54,32 @@ export class Car {
     @Column()
     colour: string;
 }
+
+
+@Entity()
+export class Booking 
+{
+    @PrimaryGeneratedColumn()
+    bookingID: number;
+
+    @Column()
+    startDate: Date;
+    
+    @Column()
+    endDate: Date;
+
+    @Column()
+    packageID: number;
+
+    @Column()
+    clientID: number;
+    
+    @Column()
+    numChildren: number;
+    
+    @Column()
+    numAdults: number;
+    
+    @Column()
+    numRooms: number;
+}
