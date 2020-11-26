@@ -1,3 +1,5 @@
+import { Booking } from '../../models/booking-interfact';
+import { BookingService } from '../../services/booking.service';
 import { ClientService } from './../../services/client.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -42,28 +44,48 @@ export class HomeComponent implements OnInit {
 })
 export class BookingComponent {
 
+  booking: Booking;
+
   constructor(
-    public dialogRef: MatDialogRef<BookingComponent>
+    public dialogRef: MatDialogRef<BookingComponent>,
+    private bookingService: BookingService,
+    private dialog: MatDialog
   ) {}
 
   bookingForm = new FormGroup({
     startDate: new FormControl('', Validators.required),
     endDate: new FormControl('', Validators.required),
-    adults: new FormControl('', Validators.required),
-    children: new FormControl('', Validators.required),
-    rooms: new FormControl('', Validators.required)
+    numAdults: new FormControl('', Validators.required),
+    numChildren: new FormControl('', Validators.required),
+    numRooms: new FormControl('', Validators.required)
   });
 
-  onSubmit() {
-    
+  onSubmit(): void {
+    this.booking = this.bookingForm.value;
+
+    if(localStorage.getItem("clientID") !== null) {
+      this.booking.clientID = parseInt(localStorage.getItem("clientID"));
+
+      this.bookingService.create(this.booking).subscribe(data => {
+        this.dialogRef.close();
+        alert('Application Successful');
+      }, error => {
+        alert('Failed To submit booking. Please try again later');
+      })
+    } else {
+      this.dialogRef.close();
+      const dialog = this.dialog.open(HomeLoginComponent, {
+        width: '500px'
+      })
+    }
   }
 
-  get children() {
-    return this.bookingForm.get('children');
+  get numChildren() {
+    return this.bookingForm.get('numChildren');
   }
 
-  get adults() {
-    return this.bookingForm.get('adults');
+  get numAdults() {
+    return this.bookingForm.get('numAdults');
   }
   get startDate() {
     return this.bookingForm.get('startDate');

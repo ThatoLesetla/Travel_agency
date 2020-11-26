@@ -12,7 +12,7 @@
                           Start Date is required
                       </div>
                   </div>
-                  <input type="date" class="form-control" formControlName="startDate" required min="2020-11-15" max="2020-12-04"/>
+                  <input type="date" class="form-control" formControlName="startDate" required min="2020-11-26" max="2020-12-04"/>
               </div>
           </div>
           <div class="form-group">
@@ -23,43 +23,43 @@
                        End Date is required
                     </div>
                 </div>
-                <input type="date" class="form-control" formControlName="endDate" required min="2020-11-15" max="2020-12-04"/>
+                <input type="date" class="form-control" formControlName="endDate" required min="2020-11-26" max="2020-12-04"/>
             </div>
           </div>
           <div class="form-group">
             <label class="control-label col-md-12">Children: </label>
             <div class="col-md-12">
-                <div *ngIf="children.invalid && (children.dirty || children.touched)" class="text-danger">
-                    <div *ngIf="children.errors.required">
+                <div *ngIf="numChildren.invalid && (numChildren.dirty || numChildren.touched)" class="text-danger">
+                    <div *ngIf="numChildren.errors.required">
                        Number of children is required
                     </div>
                 </div>
-                <input type="number" class="form-control" formControlName="children" required min="0" max="5"/>
+                <input type="number" class="form-control" formControlName="numChildren" required min="0" max="5"/>
             </div>
           </div>
           <div class="form-group">
             <label class="control-label col-md-12">Adults: </label>
             <div class="col-md-12">
-                <div *ngIf="adults.invalid && (adults.dirty || adults.touched)" class="text-danger">
-                    <div *ngIf="adults.errors.required">
+                <div *ngIf="numAdults.invalid && (numAdults.dirty || numAdults.touched)" class="text-danger">
+                    <div *ngIf="numAdults.errors.required">
                        Number of adults is required
                     </div>
                 </div>
-                <input type="number" class="form-control" formControlName="adults" required min="0" max="4" />
+                <input type="number" class="form-control" formControlName="numAdults" required min="0" max="4" />
             </div>
           </div>
           <div class="form-group">
             <label class="control-label col-md-12">Rooms: </label>
             <div class="col-md-12">
-                <div *ngIf="rooms.invalid && (rooms.dirty || rooms.touched)" class="text-danger">
-                    <div *ngIf="rooms.errors.required">
+                <div *ngIf="numRooms.invalid && (numRooms.dirty || numRooms.touched)" class="text-danger">
+                    <div *ngIf="numRooms.errors.required">
                        Rooms is required
                     </div>
                 </div>
-                <input type="number" class="form-control" formControlName="rooms" required min="0" max="3"/>
+                <input type="number" class="form-control" formControlName="numRooms" required min="0" max="3"/>
             </div>
           </div>
-              <button type="submit" [disabled]="!bookingForm.valid" class="btn btn-danger pull-right">Checkout</button>
+              <button type="submit" [disabled]="!bookingForm.valid" class="btn btn-danger pull-right">Submit</button>
               <button type="button" class="btn btn-warning" (click)="onCancel()">Canel</button>
       </form>
   </div>
